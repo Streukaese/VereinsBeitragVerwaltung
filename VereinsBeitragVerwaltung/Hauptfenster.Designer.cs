@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewMitglieder = new System.Windows.Forms.DataGridView();
             this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +66,7 @@
             this.dataGridViewMitglieder.ReadOnly = true;
             this.dataGridViewMitglieder.RowHeadersWidth = 51;
             this.dataGridViewMitglieder.RowTemplate.Height = 24;
-            this.dataGridViewMitglieder.Size = new System.Drawing.Size(391, 396);
+            this.dataGridViewMitglieder.Size = new System.Drawing.Size(521, 396);
             this.dataGridViewMitglieder.TabIndex = 0;
             this.dataGridViewMitglieder.DoubleClick += new System.EventHandler(this.dataGridViewMitglieder_DoubleClick);
             // 
@@ -81,9 +81,9 @@
             // 
             // ColumnName
             // 
-            dataGridViewCellStyle1.Format = "abcd";
-            dataGridViewCellStyle1.NullValue = "123";
-            this.ColumnName.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Format = "abcd";
+            dataGridViewCellStyle19.NullValue = "123";
+            this.ColumnName.DefaultCellStyle = dataGridViewCellStyle19;
             this.ColumnName.HeaderText = "Name";
             this.ColumnName.MinimumWidth = 6;
             this.ColumnName.Name = "ColumnName";
@@ -92,9 +92,9 @@
             // 
             // ColumnAge
             // 
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ColumnAge.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Format = "N0";
+            dataGridViewCellStyle20.NullValue = null;
+            this.ColumnAge.DefaultCellStyle = dataGridViewCellStyle20;
             this.ColumnAge.HeaderText = "Age";
             this.ColumnAge.MinimumWidth = 6;
             this.ColumnAge.Name = "ColumnAge";
@@ -103,9 +103,9 @@
             // 
             // ColumnBeitrag
             // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ColumnBeitrag.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Format = "C2";
+            dataGridViewCellStyle21.NullValue = null;
+            this.ColumnBeitrag.DefaultCellStyle = dataGridViewCellStyle21;
             this.ColumnBeitrag.HeaderText = "Beitrag";
             this.ColumnBeitrag.MinimumWidth = 6;
             this.ColumnBeitrag.Name = "ColumnBeitrag";
@@ -123,7 +123,7 @@
             // 
             // buttonHinzufuegen
             // 
-            this.buttonHinzufuegen.Location = new System.Drawing.Point(517, 244);
+            this.buttonHinzufuegen.Location = new System.Drawing.Point(634, 245);
             this.buttonHinzufuegen.Name = "buttonHinzufuegen";
             this.buttonHinzufuegen.Size = new System.Drawing.Size(166, 33);
             this.buttonHinzufuegen.TabIndex = 2;
@@ -133,7 +133,7 @@
             // 
             // buttonAendern
             // 
-            this.buttonAendern.Location = new System.Drawing.Point(517, 308);
+            this.buttonAendern.Location = new System.Drawing.Point(634, 309);
             this.buttonAendern.Name = "buttonAendern";
             this.buttonAendern.Size = new System.Drawing.Size(166, 33);
             this.buttonAendern.TabIndex = 3;
@@ -143,7 +143,7 @@
             // 
             // buttonEntfernen
             // 
-            this.buttonEntfernen.Location = new System.Drawing.Point(517, 405);
+            this.buttonEntfernen.Location = new System.Drawing.Point(634, 406);
             this.buttonEntfernen.Name = "buttonEntfernen";
             this.buttonEntfernen.Size = new System.Drawing.Size(166, 33);
             this.buttonEntfernen.TabIndex = 4;
@@ -154,7 +154,7 @@
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(422, 42);
+            this.labelName.Location = new System.Drawing.Point(539, 43);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(44, 16);
             this.labelName.TabIndex = 5;
@@ -163,7 +163,7 @@
             // labelAge
             // 
             this.labelAge.AutoSize = true;
-            this.labelAge.Location = new System.Drawing.Point(422, 75);
+            this.labelAge.Location = new System.Drawing.Point(539, 76);
             this.labelAge.Name = "labelAge";
             this.labelAge.Size = new System.Drawing.Size(32, 16);
             this.labelAge.TabIndex = 6;
@@ -172,7 +172,7 @@
             // labelBeitrag
             // 
             this.labelBeitrag.AutoSize = true;
-            this.labelBeitrag.Location = new System.Drawing.Point(422, 110);
+            this.labelBeitrag.Location = new System.Drawing.Point(539, 111);
             this.labelBeitrag.Name = "labelBeitrag";
             this.labelBeitrag.Size = new System.Drawing.Size(50, 16);
             this.labelBeitrag.TabIndex = 7;
@@ -180,26 +180,27 @@
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(517, 42);
+            this.textBoxName.Location = new System.Drawing.Point(634, 43);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(187, 22);
             this.textBoxName.TabIndex = 8;
             // 
             // numericUpDownAge
             // 
-            this.numericUpDownAge.Location = new System.Drawing.Point(517, 75);
+            this.numericUpDownAge.Location = new System.Drawing.Point(634, 76);
             this.numericUpDownAge.Name = "numericUpDownAge";
             this.numericUpDownAge.Size = new System.Drawing.Size(187, 22);
             this.numericUpDownAge.TabIndex = 9;
             // 
             // numericUpDownBeitrag
             // 
+            this.numericUpDownBeitrag.DecimalPlaces = 2;
             this.numericUpDownBeitrag.Increment = new decimal(new int[] {
             5,
             0,
             0,
             65536});
-            this.numericUpDownBeitrag.Location = new System.Drawing.Point(517, 110);
+            this.numericUpDownBeitrag.Location = new System.Drawing.Point(634, 111);
             this.numericUpDownBeitrag.Name = "numericUpDownBeitrag";
             this.numericUpDownBeitrag.Size = new System.Drawing.Size(187, 22);
             this.numericUpDownBeitrag.TabIndex = 10;
@@ -208,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(883, 450);
             this.Controls.Add(this.numericUpDownBeitrag);
             this.Controls.Add(this.numericUpDownAge);
             this.Controls.Add(this.textBoxName);
