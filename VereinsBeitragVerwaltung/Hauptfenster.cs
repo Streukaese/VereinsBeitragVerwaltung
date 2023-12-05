@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Relational;
+using Org.BouncyCastle.OpenSsl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,7 @@ namespace VereinsBeitragVerwaltung
 
         Mitglied ausgwaehltesMitglied = null;
         Dictionary<long, Mitglied> mitgliederById = new Dictionary<long, Mitglied>();
+        Dictionary<long, Bearbeitung> mitgliederInChange = new Dictionary<long, Bearbeitung>();
         void AddMitglied(Mitglied m)
         {
             mitgliederById[m.Id] = m;
@@ -45,7 +47,7 @@ namespace VereinsBeitragVerwaltung
             MySqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                long id = reader.GetInt16(0);
+                long id = reader.GetInt64(0);
                 string name = reader.GetString(1);
                 int age = reader.GetInt32(2);
                 double beitrag = reader.GetDouble(3);
@@ -112,30 +114,50 @@ namespace VereinsBeitragVerwaltung
 
         private void buttonAendern_Click(object sender, EventArgs e)
         {
-            long zuAendernId = 32;
-            string neueName = "Mega Artikel";
-            int neuAge = 5;
-            double neuerBeitrag = 35.55;
-            MySqlCommand cmd = Datenbank.CreateCommand();
-            cmd.CommandText = "update mitglieder set name = @name"
-                     + "age = @age"
-                     + "beitrag = @beitrag"
-                     + " where id = @id";
-            cmd.Parameters.AddWithValue("name", neueName);
-            cmd.Parameters.AddWithValue("age", neuAge);
-            cmd.Parameters.AddWithValue("beitrag", neuerBeitrag);
-            cmd.Prepare();
-            cmd.ExecuteNonQuery();
+            int index = -1;
+
+            if (dataGridViewMitglieder.SelectedRows.Count == 1)
+            {
+                index = dataGridViewMitglieder.SelectedRows[0].Index;
+            }
+            else if (dataGridViewMitglieder.SelectedCells.Count == 1)
+            {
+                index = dataGridViewMitglieder.SelectedCells[0].RowIndex;
+            }
+            if (index == -1)
+            {
+                return;
+            }
+            long id = (long)dataGridViewMitglieder.Rows[index].Cells["ColumnId"].Value;
+
+            Mitglied m = mitgliederById[id];
+            Bearbeitung dialog = new Bearbeitung(m);
+            if (dialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            //dataGridViewMitglieder.SelectedCells[0].Value = dialog.Name;
+
+           
+
+            //dataGridViewMitglieder.Rows[index].Cells["ColumnId"].Value = m.Id;
+            dataGridViewMitglieder.Rows[index].Cells["ColumnName"].Value = m.Name;
+            dataGridViewMitglieder.Rows[index].Cells["ColumnAge"].Value = m.Age;
+            dataGridViewMitglieder.Rows[index].Cells["ColumnBeitrag"].Value = m.Beitrag;
         }
 
         private void buttonEntfernen_Click(object sender, EventArgs e)
         {
+            //Mitglied m = mitgliederById[dataGridViewMitglieder.Rows.Count];
+            /*
             if(dataGridViewMitglieder.SelectedRows.Count != 1)
             {
                 return;
             }
 
-            Mitglied m = mitgliederById[dataGridViewMitglieder.SelectedRows.Count];
+            //long id = (long)dataGridViewMitglieder.SelectedRows[0].Cells["ColumnId"].Value;
+           // dataGridViewMitglieder.Rows.Remove(dataGridViewMitglieder.SelectedRows[0]);
+           // mitgliederById.Remove(id);
 
             Datenbank.Open();
             //int zuLoeschenId = listBoxToDo.SelectedIndex-1;
@@ -144,34 +166,35 @@ namespace VereinsBeitragVerwaltung
             cmd.ExecuteNonQuery();
 
             Datenbank.Close();
+            */
 
-            long id = (long)dataGridViewMitglieder.SelectedRows[0].Cells["ColumnId"].Value;
-            dataGridViewMitglieder.Rows.Remove(dataGridViewMitglieder.SelectedRows[0]);
-            mitgliederById.Remove(id);
-
-            /*
-            int index = dataGridViewMitglieder.;
-            if (index < 0 || index >= fluesse.Count)
+            // Alternativ Rows auch Cells löschbar
+            int index = -1;
+            
+            if (dataGridViewMitglieder.SelectedRows.Count == 1)
             {
-                listBoxFluesse.Focus();
+                index = dataGridViewMitglieder.SelectedRows[0].Index;
+            }
+            else if(dataGridViewMitglieder.SelectedCells.Count == 1)
+            {
+                index = dataGridViewMitglieder.SelectedCells[0].RowIndex;
+            }
+            if(index == -1)
+            {
                 return;
             }
-            Fluss f = fluesse[index];
+            long id = (long)dataGridViewMitglieder.Rows[index].Cells["ColumnId"].Value;
 
-            // Fluss aus Datenbank löschen durch auswahl aus der Liste
             Datenbank.Open();
-
-            // int zuLoeschenId = 32; // Wird nicht gebraucht weil id ausgewählt wird -> f.id
+            //int zuLoeschenId = listBoxToDo.SelectedIndex-1;
             MySqlCommand cmd = Datenbank.CreateCommand();
-            cmd.CommandText = "delete from Fluss where id=" + f.id;
+            cmd.CommandText = "delete from mitglied where id=" + id;
             cmd.ExecuteNonQuery();
 
             Datenbank.Close();
-            // Fluss aus der Liste löschen (Grafisch)
-            listBoxFluesse.Items.RemoveAt(index);
-            // Fluss wird aus dem Speicher gelöscht
-            fluesse.RemoveAt(index);
-            */
+
+            dataGridViewMitglieder.Rows.RemoveAt(index);
+            mitgliederById.Remove(id);
         }
 
         private void dataGridViewMitglieder_DoubleClick(object sender, EventArgs e)

@@ -13,19 +13,20 @@ namespace VereinsBeitragVerwaltung
 {
     public partial class Bearbeitung : Form
     {
-        Mitglied mitgliedInBearbeitung = null;
-        public Mitglied mitglied { get; set; }
+        public Mitglied MitgliedInBearbeitung { get; set; }
         public Bearbeitung(Mitglied mitglied)
         {
-            //Mitglied = mitglied;
+            MitgliedInBearbeitung = mitglied;
             InitializeComponent();
             if(mitglied != null )
             {
-
+                textBoxName.Text = mitglied.Name;
+                numericUpDownAge.Value = mitglied.Age;  
+                numericUpDownBeitrag.Value = (decimal)mitglied.Beitrag;
             }
         }
 
-        private void buttonHinzufuegen_Click(object sender, EventArgs e)    // Speichern
+        private void buttonSpeichern_Click(object sender, EventArgs e)    // Speichern
         {
             string name = textBoxName.Text;
             if( name.Length == 0)
@@ -45,47 +46,53 @@ namespace VereinsBeitragVerwaltung
                 numericUpDownBeitrag.Focus();
                 return;
             }
-            if (mitgliedInBearbeitung == null)
+            if (MitgliedInBearbeitung == null)
             {
                 Datenbank.Open();
-                MySqlCommand command = Datenbank.CreateCommand();
-                command.CommandText = "INSERT INTO `mitglied` (`id`, `name`, `age`, `beitrag`) VALUES (NULL, @name, @age, @beitrag)";
-                command.Parameters.AddWithValue("name", name);
-                command.Parameters.AddWithValue("age", age);
-                command.Parameters.AddWithValue("beitrag", beitrag);
-                command.ExecuteNonQuery();
-                int id = (int)command.LastInsertedId;
+                //long zuAendernId = 32;
+                string neueName = "Mega Artikel";
+                int neuAge = 5;
+                double neuerBeitrag = 35.55;
+                MySqlCommand cmd = Datenbank.CreateCommand();
+                cmd.CommandText = "INSERT INTO mitglied (id, name, age, beitrag) VALUES (NULL, @name, @age, @beitrag)"; //FIXME insert
+                cmd.Parameters.AddWithValue("name", neueName);
+                cmd.Parameters.AddWithValue("age", neuAge);
+                cmd.Parameters.AddWithValue("beitrag", neuerBeitrag);
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+
                 Datenbank.Close();
 
                 // TODO ordentlich in die DB speichern und dabei die ID bekommen
-                Mitglied m = new Mitglied(id, name, (int)age, beitrag);
+                //Mitglied m = new Mitglied(id, name, (int)age, beitrag);
                 //mitglied.Add(m);
                 //mitglied.Items.Add(m.ToString());
+                //VereinsBeitragVerwaltung.Hauptfenster.dataGridViewMitglieder.SelectedRows[0].Value = mitglied.Name;
+                //dataGridViewMitglieder.SelectedCells[1].Value = mitglied.Age;
+                //dataGridViewMitglieder.SelectedCells[2].Value = m.Beitrag;
             }
             else
             {
                 // Update
                 Datenbank.Open();
                 MySqlCommand command = Datenbank.CreateCommand();
-                command.CommandText = "UPDATE `mitglied` SET `name` = '@name', `age` = '@age', `beitrag` = '@beitrag' WHERE `mitglied`.`id` = 5 ";
+                command.CommandText = "UPDATE `mitglied` SET `name` = @name, `age` = @age, `beitrag` = @beitrag WHERE `mitglied`.`id` = @id";
                 command.Parameters.AddWithValue("name", name);
                 command.Parameters.AddWithValue("age", age);
                 command.Parameters.AddWithValue("beitrag", beitrag);
-                command.Parameters.AddWithValue("id", mitgliedInBearbeitung.Id);
+                command.Parameters.AddWithValue("id", MitgliedInBearbeitung.Id);
                 command.Prepare();
                 command.ExecuteNonQuery();
                 Datenbank.Close();
 
-                mitglied.Name = name;
-                mitglied.Age = (int)age;
-                mitglied.Beitrag = beitrag;
-
-                //.Items[indexInBearbeitung] = flussInBearbeitung.ToString();
+                MitgliedInBearbeitung.Name = name;
+                MitgliedInBearbeitung.Age = (int)age;
+                MitgliedInBearbeitung.Beitrag = beitrag;
             }
 
-            textBoxName.Text = "";
-            numericUpDownAge.Value = 0;
-            numericUpDownBeitrag.Value = 0;
+            //textBoxName.Text = "";
+            //numericUpDownAge.Value = 0;
+            //numericUpDownBeitrag.Value = 0;
 
             DialogResult = DialogResult.OK;
             Close();

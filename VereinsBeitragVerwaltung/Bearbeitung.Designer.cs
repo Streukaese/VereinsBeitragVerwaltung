@@ -34,7 +34,7 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.numericUpDownBeitrag = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownAge = new System.Windows.Forms.NumericUpDown();
-            this.buttonHinzufuegen = new System.Windows.Forms.Button();
+            this.buttonSpeichern = new System.Windows.Forms.Button();
             this.buttonAbbrechen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBeitrag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAge)).BeginInit();
@@ -88,15 +88,15 @@
             this.numericUpDownAge.Size = new System.Drawing.Size(168, 22);
             this.numericUpDownAge.TabIndex = 6;
             // 
-            // buttonHinzufuegen
+            // buttonSpeichern
             // 
-            this.buttonHinzufuegen.Location = new System.Drawing.Point(61, 206);
-            this.buttonHinzufuegen.Name = "buttonHinzufuegen";
-            this.buttonHinzufuegen.Size = new System.Drawing.Size(187, 35);
-            this.buttonHinzufuegen.TabIndex = 7;
-            this.buttonHinzufuegen.Text = "Hinzufügen";
-            this.buttonHinzufuegen.UseVisualStyleBackColor = true;
-            this.buttonHinzufuegen.Click += new System.EventHandler(this.buttonHinzufuegen_Click);
+            this.buttonSpeichern.Location = new System.Drawing.Point(61, 206);
+            this.buttonSpeichern.Name = "buttonSpeichern";
+            this.buttonSpeichern.Size = new System.Drawing.Size(187, 35);
+            this.buttonSpeichern.TabIndex = 7;
+            this.buttonSpeichern.Text = "Speichern";
+            this.buttonSpeichern.UseVisualStyleBackColor = true;
+            this.buttonSpeichern.Click += new System.EventHandler(this.buttonSpeichern_Click);
             // 
             // buttonAbbrechen
             // 
@@ -114,7 +114,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(303, 379);
             this.Controls.Add(this.buttonAbbrechen);
-            this.Controls.Add(this.buttonHinzufuegen);
+            this.Controls.Add(this.buttonSpeichern);
             this.Controls.Add(this.numericUpDownAge);
             this.Controls.Add(this.numericUpDownBeitrag);
             this.Controls.Add(this.textBoxName);
@@ -138,7 +138,7 @@
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.NumericUpDown numericUpDownBeitrag;
         private System.Windows.Forms.NumericUpDown numericUpDownAge;
-        private System.Windows.Forms.Button buttonHinzufuegen;
+        private System.Windows.Forms.Button buttonSpeichern;
         private System.Windows.Forms.Button buttonAbbrechen;
     }
 }

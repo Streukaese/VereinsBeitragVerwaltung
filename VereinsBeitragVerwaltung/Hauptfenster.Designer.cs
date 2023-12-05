@@ -30,7 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewMitglieder = new System.Windows.Forms.DataGridView();
+            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBeitrag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelMitglieder = new System.Windows.Forms.Label();
             this.buttonHinzufuegen = new System.Windows.Forms.Button();
             this.buttonAendern = new System.Windows.Forms.Button();
@@ -41,10 +46,6 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.numericUpDownAge = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownBeitrag = new System.Windows.Forms.NumericUpDown();
-            this.ColumnId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAge = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBeitrag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMitglieder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownBeitrag)).BeginInit();
@@ -68,6 +69,48 @@
             this.dataGridViewMitglieder.Size = new System.Drawing.Size(391, 396);
             this.dataGridViewMitglieder.TabIndex = 0;
             this.dataGridViewMitglieder.DoubleClick += new System.EventHandler(this.dataGridViewMitglieder_DoubleClick);
+            // 
+            // ColumnId
+            // 
+            this.ColumnId.HeaderText = "ID";
+            this.ColumnId.MinimumWidth = 6;
+            this.ColumnId.Name = "ColumnId";
+            this.ColumnId.ReadOnly = true;
+            this.ColumnId.Visible = false;
+            this.ColumnId.Width = 125;
+            // 
+            // ColumnName
+            // 
+            dataGridViewCellStyle1.Format = "abcd";
+            dataGridViewCellStyle1.NullValue = "123";
+            this.ColumnName.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnName.HeaderText = "Name";
+            this.ColumnName.MinimumWidth = 6;
+            this.ColumnName.Name = "ColumnName";
+            this.ColumnName.ReadOnly = true;
+            this.ColumnName.Width = 125;
+            // 
+            // ColumnAge
+            // 
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ColumnAge.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnAge.HeaderText = "Age";
+            this.ColumnAge.MinimumWidth = 6;
+            this.ColumnAge.Name = "ColumnAge";
+            this.ColumnAge.ReadOnly = true;
+            this.ColumnAge.Width = 125;
+            // 
+            // ColumnBeitrag
+            // 
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ColumnBeitrag.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnBeitrag.HeaderText = "Beitrag";
+            this.ColumnBeitrag.MinimumWidth = 6;
+            this.ColumnBeitrag.Name = "ColumnBeitrag";
+            this.ColumnBeitrag.ReadOnly = true;
+            this.ColumnBeitrag.Width = 125;
             // 
             // labelMitglieder
             // 
@@ -151,49 +194,15 @@
             // 
             // numericUpDownBeitrag
             // 
+            this.numericUpDownBeitrag.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.numericUpDownBeitrag.Location = new System.Drawing.Point(517, 110);
             this.numericUpDownBeitrag.Name = "numericUpDownBeitrag";
             this.numericUpDownBeitrag.Size = new System.Drawing.Size(187, 22);
             this.numericUpDownBeitrag.TabIndex = 10;
-            // 
-            // ColumnId
-            // 
-            this.ColumnId.HeaderText = "ID";
-            this.ColumnId.MinimumWidth = 6;
-            this.ColumnId.Name = "ColumnId";
-            this.ColumnId.ReadOnly = true;
-            this.ColumnId.Visible = false;
-            this.ColumnId.Width = 125;
-            // 
-            // ColumnName
-            // 
-            this.ColumnName.HeaderText = "Name";
-            this.ColumnName.MinimumWidth = 6;
-            this.ColumnName.Name = "ColumnName";
-            this.ColumnName.ReadOnly = true;
-            this.ColumnName.Width = 125;
-            // 
-            // ColumnAge
-            // 
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ColumnAge.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnAge.HeaderText = "Age";
-            this.ColumnAge.MinimumWidth = 6;
-            this.ColumnAge.Name = "ColumnAge";
-            this.ColumnAge.ReadOnly = true;
-            this.ColumnAge.Width = 125;
-            // 
-            // ColumnBeitrag
-            // 
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ColumnBeitrag.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnBeitrag.HeaderText = "Beitrag";
-            this.ColumnBeitrag.MinimumWidth = 6;
-            this.ColumnBeitrag.Name = "ColumnBeitrag";
-            this.ColumnBeitrag.ReadOnly = true;
-            this.ColumnBeitrag.Width = 125;
             // 
             // Hauptfenster
             // 
